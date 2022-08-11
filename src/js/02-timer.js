@@ -51,7 +51,7 @@ const timer = {
       showMinutes.textContent = minutes;
       showSeconds.textContent = seconds;
 
-      if (days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0) {
+      if (deltaTime <= 500) {
         Notiflix.Notify.success('✽-(˘U˘)/✽', notifixOptions);
         clearInterval(interval);
       }
