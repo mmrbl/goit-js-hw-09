@@ -40,28 +40,23 @@ flatpickr(datetime, {
   },
 });
 
-const timer = {
-  start() {
-    const interval = setInterval(() => {
-      const currentTime = Date.now();
-      const deltaTime = deadline - currentTime;
-      const { days, hours, minutes, seconds } = convertMs(deltaTime);
-      showDays.textContent = days;
-      showHours.textContent = hours;
-      showMinutes.textContent = minutes;
-      showSeconds.textContent = seconds;
+startBtn.addEventListener('click', function start() {
+  const interval = setInterval(() => {
+    const currentTime = Date.now();
+    const deltaTime = deadline - currentTime;
+    const { days, hours, minutes, seconds } = convertMs(deltaTime);
 
-      if (deltaTime <= 500) {
-        Notiflix.Notify.success('✽-(˘U˘)/✽', notifixOptions);
-        clearInterval(interval);
-      }
-      // console.log(showSeconds.textContent);
-    }, 1000);
-  },
-};
+    showDays.textContent = days;
+    showHours.textContent = hours;
+    showMinutes.textContent = minutes;
+    showSeconds.textContent = seconds;
 
-startBtn.addEventListener('click', () => {
-  timer.start();
+    if (deltaTime <= 500) {
+      Notiflix.Notify.success('✽-(˘U˘)/✽', notifixOptions);
+      clearInterval(interval);
+    }
+    // console.log(showSeconds.textContent);
+  }, 1000);
 });
 
 // функція. яка дописує символ нуль, якщо довжина стрічки менше двох символів

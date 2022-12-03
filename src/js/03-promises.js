@@ -5,10 +5,14 @@ const stepField = document.querySelector('[name=step]');
 const amountField = document.querySelector('[name=amount]');
 const createBtn = document.querySelector('button');
 
-createBtn.addEventListener('click', evt => {
-  evt.preventDefault();
-  for (let i = 0; i < Number(amountField.value); i += 1) {
-    const delays = Number(delayField.value) + stepField.value * i;
+createBtn.addEventListener('click', e => {
+  e.preventDefault();
+  const amuontValue = Number(amountField.value);
+  const delayValue = Number(delayField.value);
+  const stepValue = Number(stepField.value);
+
+  for (let i = 1; i < amuontValue + 1; i++) {
+    const delays = delayValue + stepValue * i;
     createPromise(i, delays)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
